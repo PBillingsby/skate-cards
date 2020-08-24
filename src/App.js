@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardCount: 0
+      cardCount: ""
     };
   }
   dealCards = e => {
@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <p>Pick an amount of cards to play:</p>
         <form onSubmit={this.dealCards}>
-          <input name="num" type="number" max="10" />
+          <input name="num" type="number" min="1" max="5" />
           <input type="submit" value="Deal!" />
         </form>
         <CardStack num={this.state.cardCount} />

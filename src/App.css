@@ -6,7 +6,10 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.card-show {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
