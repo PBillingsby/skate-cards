@@ -25,6 +25,7 @@ export default class CardStack extends Component {
     }
   }
   render() {
+    const computerCard = skaters[Math.floor(Math.random() * skaters.length)];
     return (
       <div className="card-show container pt-5">
         <div className="card-grid m-3 p-4 border border-black">
@@ -34,9 +35,7 @@ export default class CardStack extends Component {
         </div>
         <div className="d-none card-grid m-3 p-4 border border-black">
           <div>
-            <SkateCard
-              computerCard={skaters[Math.floor(Math.random() * skaters.length)]}
-            />
+            <SkateCard skater={computerCard} computerCard={computerCard} />
           </div>
         </div>
       </div>
