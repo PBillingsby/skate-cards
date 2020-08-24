@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-
+import SkateCard from "./SkateCard";
 export default class CardStack extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cardNumber: this.props.num
-    };
-    console.log(this.props);
-  }
+  getCards = e => {
+    debugger;
+  };
   render() {
-    return <>Phil</>;
+    return <button onChange={this.getCards}>{this.props.num}</button>;
   }
 }
+
+const skaters = [
+  { name: "Tony Hawk", stance: "Goofy" },
+  { name: "Tony Hawk", stance: "Goofy" },
+  { name: "Tony Hawk", stance: "Goofy" },
+  { name: "Tony Hawk", stance: "Goofy" }
+];

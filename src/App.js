@@ -4,9 +4,17 @@ import CardStack from "./CardStack";
 import { render } from "@testing-library/react";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardCount: ""
+    };
+  }
   dealCards = e => {
     e.preventDefault();
-    return <CardStack num={e.target.num.value} />;
+    this.setState({
+      cardCount: e.target.num.value
+    });
   };
   render() {
     return (
@@ -16,6 +24,7 @@ class App extends Component {
           <input name="num" type="number" max="10" />
           <input type="submit" value="Deal!" />
         </form>
+        <CardStack num={this.state.cardCount} />
       </div>
     );
   }
