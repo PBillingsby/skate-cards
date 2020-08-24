@@ -1,0 +1,24 @@
+import React, { Component } from "react";
+import "./App.css";
+import CardStack from "./CardStack";
+import { render } from "@testing-library/react";
+
+class App extends Component {
+  dealCards = e => {
+    e.preventDefault();
+    return <CardStack num={e.target.num.value} />;
+  };
+  render() {
+    return (
+      <div className="App">
+        <p>Pick an amount of cards to play:</p>
+        <form onSubmit={this.dealCards}>
+          <input name="num" type="number" max="10" />
+          <input type="submit" value="Deal!" />
+        </form>
+      </div>
+    );
+  }
+}
+
+export default App;
