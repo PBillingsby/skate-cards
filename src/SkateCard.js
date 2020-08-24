@@ -6,12 +6,16 @@ export default class SkateCard extends React.Component {
     this.state = {
       computerCard: this.props.computerCard
     };
+    let compCard;
   }
 
   handleClick() {
     debugger;
   }
   render() {
+    if (!!this.props.computerCard) {
+      this.compCard = this.props.computerCard;
+    }
     const skater = this.props.skater;
     return (
       <div className="card m-3 p-2 mx-auto" style={{ width: "15rem" }}>
