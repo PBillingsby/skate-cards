@@ -6,7 +6,8 @@ export default class CardStack extends Component {
     super(props);
     this.state = {
       count: 0,
-      selectedSkaters: []
+      selectedSkaters: [],
+      computerCard: ""
     };
   }
   componentDidUpdate() {
@@ -31,13 +32,10 @@ export default class CardStack extends Component {
             return <SkateCard skater={skater} />;
           })}
         </div>
-        <div
-          ref="computerCard"
-          className="d-none card-grid m-3 p-4 border border-black"
-        >
+        <div className="d-none card-grid m-3 p-4 border border-black">
           <div>
             <SkateCard
-              skater={skaters[Math.floor(Math.random() * skaters.length)]}
+              computerCard={skaters[Math.floor(Math.random() * skaters.length)]}
             />
           </div>
         </div>
