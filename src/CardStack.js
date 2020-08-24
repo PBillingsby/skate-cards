@@ -5,15 +5,22 @@ export default class CardStack extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      cardCount: 0,
       count: 0,
       selectedSkaters: []
     };
   }
-  randomNumber(num) {
-    return Math.floor(Math.random() * num);
+  componentDidUpdate() {
+    console.log(this.state.selectedSkaters);
+    this.renderCards();
   }
+
+  // randomNumber(num) {
+  //   return Math.floor(Math.random() * num);
+  // }
+
   renderCards() {
-    while (this.props.num > this.state.count) {
+    if (parseInt(this.props.num) > this.state.count) {
       this.state.selectedSkaters.push(
         skaters[Math.floor(Math.random() * skaters.length)]
       );
@@ -25,7 +32,8 @@ export default class CardStack extends Component {
   render() {
     return (
       <div>
-        {this.state.skaters.map(skater => {
+        {/* {this.renderCards()} */}
+        {this.state.selectedSkaters.map(skater => {
           return <SkateCard skater={skater} />;
         })}
       </div>
