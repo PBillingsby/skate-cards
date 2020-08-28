@@ -1,42 +1,23 @@
 import React, { Component } from "react";
 import SkateCard from "./SkateCard";
-import skaters from "./skaterData";
 export default class CardStack extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
-      selectedSkaters: [],
-      computerCard: ""
+      count: 0
     };
   }
-  componentDidUpdate() {
-    this.renderCards();
+  componentDidMount() {
+    console.log(this.props);
   }
 
-  renderCards() {
-    if (parseInt(this.props.num) > this.state.count) {
-      this.state.selectedSkaters.push(
-        skaters[Math.floor(Math.random() * skaters.length)]
-      );
-      this.setState({
-        count: this.state.count + 1
-      });
-    }
-  }
   render() {
-    const computerCard = skaters[Math.floor(Math.random() * skaters.length)];
+    // USE ARROW FUNCTION TO BIND OR ILL LOSE INSTANCE (undefined)
     return (
       <div className="card-show container pt-5">
-        <div className="card-grid m-3 p-4 border border-black">
-          {this.state.selectedSkaters.map(skater => {
-            return <SkateCard skater={skater} />;
-          })}
-        </div>
+        <div className="card-grid m-3 p-4 border border-black"></div>
         <div className="d-none card-grid m-3 p-4 border border-black">
-          <div>
-            <SkateCard skater={computerCard} computerCard={computerCard} />
-          </div>
+          <div></div>
         </div>
       </div>
     );

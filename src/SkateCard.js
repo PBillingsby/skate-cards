@@ -3,20 +3,13 @@ import React from "react";
 export default class SkateCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      computerCard: this.props.computerCard
-    };
-    let compCard;
   }
 
   handleClick() {
     debugger;
   }
   render() {
-    if (!!this.props.computerCard) {
-      this.compCard = this.props.computerCard;
-    }
-    const skater = this.props.skater;
+    const { skater } = this.props.skater;
     return (
       <div className="card m-3 p-2 mx-auto" style={{ width: "15rem" }}>
         <h4>{skater.name}</h4>
