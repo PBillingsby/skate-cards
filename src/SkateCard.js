@@ -10,6 +10,7 @@ export default class SkateCard extends React.Component {
   }
   render() {
     const { skater } = this.props.skater;
+    debugger;
     return (
       <div className="card m-3 p-2 mx-auto" style={{ width: "15rem" }}>
         <h4>{skater.name}</h4>
