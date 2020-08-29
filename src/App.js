@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       userSkaters: [],
       computerCard: skaters[Math.floor(Math.random() * skaters.length)],
-      result: ""
+      result: "",
+      hidden: "none"
     };
   }
 
@@ -45,16 +46,19 @@ class App extends Component {
       this.state.computerCard.air;
     if (userAverage > computerAverage) {
       this.setState({
-        hidden: "",
-        result: "YOU WIN"
+        result: `YOU WIN BY ${userAverage - computerAverage} POINTS`,
+        computerCard: skaters[Math.floor(Math.random() * skaters.length)]
       });
     } else {
       this.setState({
-        hidden: "",
         result: "YOU LOSE"
       });
-      debugger;
+      this.removeSkater(skater);
     }
+  };
+
+  removeSkater = () => {
+    debugger;
   };
 
   render() {
@@ -65,7 +69,7 @@ class App extends Component {
           <input name="num" type="number" min="1" max="5" />
           <input type="submit" value="Deal!" />
         </form>
-        {this.state.result}
+        <h1 style={{ color: "red" }}>{this.state.result}</h1>
         <div className="card-grid">
           <div>
             <h4 className="text-center">Your Card's</h4>
@@ -82,7 +86,7 @@ class App extends Component {
             <h4 className="text-center">Computer Card</h4>
             <SkateCard
               key={"computerCard"}
-              hidden={"hidden"}
+              hidden={this.state.hidden}
               skater={this.state.computerCard}
             />
           </div>

@@ -10,7 +10,7 @@ export default class SkateCard extends React.Component {
         <>
           <h4>{this.props.skater.name}</h4>
           <img className="card-img-top mx-auto" src={this.props.skater.url} />
-          <div className={this.props.hidden}>
+          <div style={{ display: this.props.hidden }}>
             <h5>Stance: {this.props.skater.stance}</h5>
             <h5>Flips: {this.props.skater.flips}</h5>
             <h5>Flips: {this.props.skater.spins}</h5>
