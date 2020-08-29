@@ -28,15 +28,28 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <p>Pick an amount of cards to play:</p>
         <form onSubmit={event => this.handleSubmit(event)}>
           <input name="num" type="number" min="1" max="5" />
           <input type="submit" value="Deal!" />
         </form>
-        {this.state.userSkaters.map(skater => (
-          <SkateCard skater={skater} />
-        ))}
+        <div className="card-grid">
+          <div>
+            <h4 className="text-center">Your Card's</h4>
+            {this.state.userSkaters.map(skater => (
+              <SkateCard
+                key={this.state.userSkaters.indexOf(skater)}
+                skater={skater}
+              />
+            ))}
+          </div>
+
+          <div className="d-none">
+            <h4 className="text-center">Computer Card</h4>
+            <SkateCard key={"computerCard"} skater={this.state.computerCard} />
+          </div>
+        </div>
       </div>
     );
   }
