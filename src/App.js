@@ -26,6 +26,10 @@ class App extends Component {
     });
   };
 
+  handleClick = e => {
+    debugger;
+  };
+
   render() {
     return (
       <div className="App container">
@@ -40,6 +44,7 @@ class App extends Component {
             {this.state.userSkaters.map(skater => (
               <SkateCard
                 key={this.state.userSkaters.indexOf(skater)}
+                handleClick={() => this.handleClick(this)}
                 skater={skater}
               />
             ))}

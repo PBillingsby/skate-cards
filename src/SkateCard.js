@@ -1,9 +1,6 @@
 import React from "react";
 
 export default class SkateCard extends React.Component {
-  handleClick() {
-    debugger;
-  }
   render() {
     return (
       <div
@@ -17,7 +14,9 @@ export default class SkateCard extends React.Component {
           <h5>Flips: {this.props.skater.flips}</h5>
           <h5>Flips: {this.props.skater.spins}</h5>
           <h5>Grinds: {this.props.skater.grinds}</h5>
-          <button onClick={() => this.handleClick(this)}>Use</button>
+          <button onClick={this.props.handleClick} value={this.props}>
+            Use Card
+          </button>
         </>
       </div>
     );
