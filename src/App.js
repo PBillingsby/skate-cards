@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       userSkaters: [],
-      computerCard: skaters[Math.floor(Math.random() * skaters.length)]
+      computerCard: skaters[Math.floor(Math.random() * skaters.length)],
+      result: ""
     };
   }
 
@@ -26,13 +27,34 @@ class App extends Component {
     });
   };
 
-  handleClick = e => {
-    let skaterName = e.target.parentNode.querySelector("h4").innerText;
-    let skate = this.state.userSkaters.filter(
-      skater => (skater.name = skaterName)
+  handleClick = event => {
+    let selectedSkater = skaters.find(
+      skater => skater.id === parseInt(event.target.value)
     );
-    console.log(skate);
+    this.decideWinner(selectedSkater);
     // FIX TO FILTER ARRAY AND SHOW RESULT
+  };
+
+  decideWinner = skater => {
+    const userAverage =
+      skater.spins + skater.grinds + skater.flips + skater.air;
+    const computerAverage =
+      this.state.computerCard.spins +
+      this.state.computerCard.grinds +
+      this.state.computerCard.flips +
+      this.state.computerCard.air;
+    if (userAverage > computerAverage) {
+      this.setState({
+        hidden: "",
+        result: "YOU WIN"
+      });
+    } else {
+      this.setState({
+        hidden: "",
+        result: "YOU LOSE"
+      });
+      debugger;
+    }
   };
 
   render() {
@@ -43,21 +65,26 @@ class App extends Component {
           <input name="num" type="number" min="1" max="5" />
           <input type="submit" value="Deal!" />
         </form>
+        {this.state.result}
         <div className="card-grid">
           <div>
             <h4 className="text-center">Your Card's</h4>
             {this.state.userSkaters.map(skater => (
               <SkateCard
                 key={this.state.userSkaters.indexOf(skater)}
-                handleClick={() => this.handleClick(this)}
+                handleClick={this.handleClick}
                 skater={skater}
               />
             ))}
           </div>
 
-          <div className="d-none">
+          <div>
             <h4 className="text-center">Computer Card</h4>
-            <SkateCard key={"computerCard"} skater={this.state.computerCard} />
+            <SkateCard
+              key={"computerCard"}
+              hidden={"hidden"}
+              skater={this.state.computerCard}
+            />
           </div>
         </div>
       </div>
