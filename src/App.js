@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import CardStack from "./CardStack";
 import { render } from "@testing-library/react";
 import skaters from "./skaterData";
+import SkateCard from "./SkateCard";
 // import { thisExpression } from "@babel/types";
 // import { Card } from "react-bootstrap";
 
@@ -11,16 +11,18 @@ class App extends Component {
     super(props);
     this.state = {
       userSkaters: [],
-      computerCard: skaters[Math.floor(Math.random() * skaters.length)],
-      submitted: false
+      computerCard: skaters[Math.floor(Math.random() * skaters.length)]
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    debugger;
+    let skateArr = [];
+    for (let i = 0; i < parseInt(event.target.num.value); i++) {
+      skateArr.push(skaters[Math.floor(Math.random() * skaters.length)]);
+    }
     this.setState({
-      submitted: true
+      userSkaters: skateArr
     });
   };
 
@@ -28,16 +30,13 @@ class App extends Component {
     return (
       <div className="App">
         <p>Pick an amount of cards to play:</p>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="num"
-            type="number"
-            min="1"
-            max="5"
-            onChange={this.handleChange}
-          />
+        <form onSubmit={event => this.handleSubmit(event)}>
+          <input name="num" type="number" min="1" max="5" />
           <input type="submit" value="Deal!" />
         </form>
+        {this.state.userSkaters.map(skater => (
+          <SkateCard skater={skater} />
+        ))}
       </div>
     );
   }
