@@ -27,7 +27,12 @@ class App extends Component {
   };
 
   handleClick = e => {
-    debugger;
+    let skaterName = e.target.parentNode.querySelector("h4").innerText;
+    let skate = this.state.userSkaters.filter(
+      skater => (skater.name = skaterName)
+    );
+    console.log(skate);
+    // FIX TO FILTER ARRAY AND SHOW RESULT
   };
 
   render() {
